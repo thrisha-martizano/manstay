@@ -1,4 +1,4 @@
-DASH.J
+
 window.onload = function () {
     const loggedInUserEmail = localStorage.getItem("loggedInUser");
 
@@ -27,7 +27,7 @@ function updateDashboardStats() {
     // --- Stat Cards ---
     const totalBookings = bookings.length;
 
-    // FIX: amount is stored as "₱2,500" — strip ₱ and commas to get number
+    //  amount is stored as "₱2,500" — strip ₱ and commas to get number
     const totalSpent = payments
         .filter(p => p.status.toLowerCase() === 'paid')
         .reduce((sum, p) => sum + parseFloat(String(p.amount).replace(/[₱,]/g, '') || 0), 0);
@@ -40,7 +40,7 @@ function updateDashboardStats() {
     document.getElementById('upcoming-bookings-count').innerText = upcoming;
     document.getElementById('completed-stays-count').innerText  = completed;
 
-    // --- Recent Bookings (last 3) ---
+    // --- Recent Bookings  ---
     const recentList = document.getElementById('recent-bookings-list');
     const recentData = [...bookings].reverse().slice(0, 3);
 
