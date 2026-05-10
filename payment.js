@@ -16,12 +16,12 @@ window.onload = function () {
 
 function loadPaymentTable() {
     const currentUser = localStorage.getItem("loggedInUser");
-    const paymentKey  = `userPayments_${currentUser}`;  // FIXED: user-specific key
+    const paymentKey  = `userPayments_${currentUser}`;  
 
     const paymentsBody = document.getElementById('payments-body');
     const myPayments   = JSON.parse(localStorage.getItem(paymentKey)) || [];
 
-    paymentsBody.innerHTML = ''; // Clear static rows
+    paymentsBody.innerHTML = ''; 
 
     if (myPayments.length === 0) {
         paymentsBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px; color:#888;">No payment records yet.</td></tr>';
@@ -46,7 +46,7 @@ function loadPaymentTable() {
     updatePaymentStats(myPayments);
 }
 
-// FIXED: reads from the payments array directly (not from the DOM)
+
 function updatePaymentStats(myPayments) {
     let totalPaid     = 0;
     let pendingAmount = 0;
