@@ -1,0 +1,213 @@
+/* =============================================
+   MOBILE-NAV.CSS — ManoloStays (FIXED)
+   Add <link rel="stylesheet" href="mobile-nav.css">
+   to ALL your HTML pages (inside <head>)
+   ============================================= */
+
+
+/* ── HAMBURGER BUTTON (hidden on desktop) ─────── */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    z-index: 1100;
+    flex-shrink: 0;
+}
+.hamburger-btn:hover { background: rgba(255,255,255,0.1); }
+
+.hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Animate into X when open */
+.hamburger-btn.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger-btn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* Dark sidebar hamburger lines */
+.content-header .hamburger-btn span {
+    background: #0A1931;
+}
+
+
+/* ── SIDEBAR OVERLAY (dashboard pages) ────────── */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+.sidebar-overlay.open { display: block; }
+
+
+/* =============================================
+   LANDING PAGE — NAVBAR FIX
+   ============================================= */
+@media (max-width: 900px) {
+
+    /* Fixed solid navbar strip */
+    .navbar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 12px 5% !important;
+        background: #0A1931 !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
+        z-index: 500;
+    }
+
+    /* Logo left */
+    .logo {
+        flex: 1;
+        font-size: 18px !important;
+        color: white !important;
+    }
+
+    /* Hamburger shows, right side */
+    .navbar .hamburger-btn {
+        display: flex !important;
+        order: 2;
+        margin-left: auto;
+    }
+
+    /* Auth buttons compact, right of hamburger */
+    .auth-buttons {
+        display: flex !important;
+        align-items: center;
+        gap: 6px;
+        order: 3;
+        margin-left: 10px;
+    }
+    .auth-buttons .login-btn {
+        padding: 7px 12px !important;
+        font-size: 12px !important;
+        border-radius: 6px !important;
+        margin-right: 0 !important;
+    }
+    .auth-buttons .signup-btn {
+        padding: 7px 12px !important;
+        font-size: 12px !important;
+        border-radius: 6px !important;
+    }
+
+    /* Nav wraps below the logo row */
+    nav {
+        order: 4;
+        width: 100%;
+    }
+
+    /* NAV LINKS: hidden until hamburger clicked */
+    .nav-links {
+        display: none !important;
+        flex-direction: column !important;
+        width: 100%;
+        background: #0d1f3a;
+        padding: 8px 0;
+        margin-top: 10px;
+        border-radius: 10px;
+        gap: 0 !important;
+        list-style: none;
+    }
+    .nav-links.open {
+        display: flex !important;
+    }
+    .nav-links li { width: 100%; }
+    .nav-links li a {
+        display: block !important;
+        padding: 13px 20px !important;
+        color: #d0d8e8 !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        transition: background 0.2s, color 0.2s;
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links li a:hover {
+        background: rgba(255,255,255,0.08);
+        color: #F3DE2C !important;
+    }
+
+    /* Push hero below the fixed navbar */
+    .hero { padding-top: 70px !important; }
+
+
+    /* =============================================
+       DASHBOARD — SIDEBAR
+       ============================================= */
+    .content-header .hamburger-btn { display: flex !important; }
+
+    .sidebar {
+        position: fixed !important;
+        top: 0;
+        left: -280px;
+        height: 100vh;
+        width: 240px !important;
+        z-index: 1000;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+    }
+    .sidebar.open {
+        left: 0;
+        box-shadow: 4px 0 30px rgba(0,0,0,0.25);
+    }
+
+    .dashboard-container { flex-direction: column !important; }
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 16px !important;
+    }
+
+    .charts-grid,
+    .lower-grid { grid-template-columns: 1fr !important; }
+    .stat-cards { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .accomm-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .details-container { grid-template-columns: 1fr !important; }
+    .booking-sticky { position: static !important; width: 100% !important; }
+    .profile-grid { grid-template-columns: 1fr !important; }
+    .payment-cards { grid-template-columns: repeat(2, 1fr) !important; }
+    .table-card { overflow-x: auto; }
+    .booking-filters { flex-wrap: wrap; gap: 6px; }
+    .filter-btn { flex: 1 1 auto; min-width: 80px; font-size: 13px; }
+}
+
+
+/* ── SMALL PHONES ─────────────────────────────── */
+@media (max-width: 480px) {
+    .accomm-grid { grid-template-columns: 1fr !important; }
+    .payment-cards { grid-template-columns: 1fr !important; }
+
+    .booking-filters {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .filter-btn { white-space: nowrap; flex-shrink: 0; }
+
+    .auth-buttons { flex-direction: column !important; gap: 4px !important; }
+    .auth-buttons .login-btn,
+    .auth-buttons .signup-btn {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+    }
+}
