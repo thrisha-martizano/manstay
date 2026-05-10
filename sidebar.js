@@ -1,8 +1,4 @@
-/* =============================================
-   SIDEBAR.JS — ManoloStays
-   Add <script src="sidebar.js"></script>
-   to ALL your HTML pages (before </body>)
-   ============================================= */
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
