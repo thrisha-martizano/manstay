@@ -1,16 +1,13 @@
 window.onload = function () {
     const loggedInUserEmail = localStorage.getItem("loggedInUser");
-
     if (!loggedInUserEmail) {
         window.location.href = "index.html";
         return;
     }
-
     const userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
     if (document.getElementById('nav-user-name')) {
         document.getElementById('nav-user-name').innerText = userData.name || " ";
     }
-
     loadBookings();
 };
 
@@ -32,7 +29,6 @@ function loadBookings() {
             </tr>`;
         return;
     }
-
     myBookings.forEach((book, index) => {
         const row = document.createElement('tr');
         row.setAttribute('data-status', book.status);
@@ -72,7 +68,7 @@ function filterBookings(status) {
     });
 }
 
-// --- View Details Modal ---
+// --- View Details sa acc. ---
 function showDetails(button) {
     const modal       = document.getElementById('detailsModal');
     const modalBody   = document.getElementById('modal-details-body');
