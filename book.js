@@ -14,14 +14,14 @@ window.onload = function () {
     loadBookings();
 };
 
-// --- Load bookings from localStorage into table (clears static rows) ---
+// --- Load bookings ---
 function loadBookings() {
     const currentUser = localStorage.getItem("loggedInUser");
     const bookingKey  = `userBookings_${currentUser}`;
     const myBookings  = JSON.parse(localStorage.getItem(bookingKey)) || [];
 
     const bookingsBody = document.getElementById('bookings-body');
-    bookingsBody.innerHTML = ''; // Clear hardcoded static rows
+    bookingsBody.innerHTML = ''; 
 
     if (myBookings.length === 0) {
         bookingsBody.innerHTML = `
@@ -126,7 +126,7 @@ function editBooking() {
 
 function saveEdit() {
     const currentUser = localStorage.getItem("loggedInUser");
-    const bookingKey  = `userBookings_${currentUser}`;  // FIXED: user-specific key
+    const bookingKey  = `userBookings_${currentUser}`;  
 
     const modal     = document.getElementById('detailsModal');
     const rowIndex  = modal.dataset.currentRowIndex;
@@ -145,7 +145,7 @@ function saveEdit() {
     row.cells[1].innerText = newDates;
     row.cells[2].innerText = newGuests;
 
-    // Update localStorage (FIXED: user-specific key)
+    // Update localStorage 
     let myBookings = JSON.parse(localStorage.getItem(bookingKey)) || [];
     if (myBookings[dataIndex]) {
         myBookings[dataIndex].dates  = newDates;
@@ -167,8 +167,8 @@ function cancelBooking() {
     if (!confirm("Are you sure you want to cancel this pending booking?")) return;
 
     const currentUser = localStorage.getItem("loggedInUser");
-    const bookingKey  = `userBookings_${currentUser}`;   // FIXED
-    const paymentKey  = `userPayments_${currentUser}`;   // FIXED
+    const bookingKey  = `userBookings_${currentUser}`;  
+    const paymentKey  = `userPayments_${currentUser}`;   
 
     const modal     = document.getElementById('detailsModal');
     const rowIndex  = modal.dataset.currentRowIndex;
@@ -196,7 +196,7 @@ function cancelBooking() {
     // Update table row UI
     row.setAttribute('data-status', 'cancelled');
     row.cells[4].innerHTML = '<span class="status-badge cancelled">Cancelled</span>';
-    row.cells[5].innerHTML = '';  // Remove action button
+    row.cells[5].innerHTML = '';  
 
     alert("Booking cancelled. Payment marked as Refunded.");
     closeModal();
