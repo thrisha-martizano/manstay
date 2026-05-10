@@ -10,12 +10,12 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// --- Explore button ---
+// --- Sa Explore button sa landing ---
 document.querySelector('.explore-btn').addEventListener('click', () => {
     alert("Please login or sign up to explore accommodations.");
 });
 
-// --- Section Navigation ---
+// --- Sa Section Navigation ---
 function showSection(sectionId) {
     const hero   = document.querySelector('.hero');
     const login  = document.getElementById('login-section');
@@ -38,7 +38,7 @@ function showSection(sectionId) {
     }
 }
 
-// --- Login ---
+// --- In Login ---
 function handleLogin(event) {
     event.preventDefault();
 
@@ -60,7 +60,7 @@ function handleLogin(event) {
     }
 }
 
-// --- Signup ---
+// --- In Signup ---
 function handleSignup(event) {
     event.preventDefault();
 
@@ -68,7 +68,7 @@ function handleSignup(event) {
     const email    = document.getElementById('signupEmail').value.trim();
     const password = document.getElementById('signupPassword').value;
 
-    // Prevent overwriting existing account
+    // gaprevent ug overwriting existing account
     if (localStorage.getItem(email)) {
         alert("An account with this email already exists. Please log in.");
         showSection('login');
