@@ -116,9 +116,9 @@ function confirmBooking() {
         id:          sharedID,
         bookingName: accommodation,
         date:        today,
-        amount:      formattedTotal,   // stored as "₱2,500" — consistent with booking
+        amount:      formattedTotal,  
         method:      'GCash',
-        status:      'paid'            // lowercase — consistent with dash.js filter
+        status:      'paid'            
     };
 
     // --- SAVE with user-specific keys (FIXED) ---
